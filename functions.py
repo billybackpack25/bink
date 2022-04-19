@@ -1,0 +1,88 @@
+import csv
+import os
+import signal
+
+
+def print_menu(menu_options: dict) -> None:
+    """
+    Print out the menu options provided
+
+    Args:
+        menu_options (dict): Menu options with the key being used to validate user input
+    """
+    print("\n\nOPTIONS: \n")
+    for key, value in menu_options.items():
+        print(f"{key}: {value}")
+
+    print("\n")
+
+
+def print_welcome() -> None:
+    """
+    Read and print out a welcome.txt file that includes ascii art
+    """
+    with open("./bink/welcome.txt", "r") as file:
+        ascii_art = file.readlines()
+
+    # Join the lines
+    print("".join(ascii_art))
+
+
+def goodbye() -> None:
+    """
+    Clear the screen and print a goodbye statement
+    """
+    clear_the_screen()
+    print("Thank you for using Bink, hope to see you again soon.")
+    exit(0)
+
+
+def signal_handler(sig, frame) -> None:
+    """
+    Handle the user hitting Crtl + C, print goodbye message and exit
+    """
+    goodbye()
+    exit(0)
+
+
+def clear_the_screen() -> None:
+    """
+    Clear the terminal for both Windows and Linux OS
+    """
+    os.system("cls" if os.name == "nt" else "clear")
+
+
+def read_csv(filename: str) -> list:
+    """
+    Read in a csv file
+
+    Args:
+        filename (str): Location for the csv file to read
+
+    Returns:
+        list: List of CSV data read in from the file as a list of ordered dictionaries
+    """
+    with open(filename, newline="") as csv_infile:
+        csv_data = [x for x in csv.DictReader(csv_infile)]
+    return csv_data
+
+
+def sort_csv(csv_data: list, key: str, order: str = "asc") -> list:
+    """
+    Sort given csv data by a key in ascending order unless specified otherwise.
+
+    Args:
+        csv_data (list): List of dictionaries as csv data
+        key (str): Used to select which field to sort the data from the CSV table headers
+        order (str, optional): asc for ascending or anything else for decending, e.g. desc. Defaults to 'asc'.
+
+    Returns:
+        list: List of sorted dictionaries by the key provided
+    """
+    try:
+        newlist = sorted(
+            csv_data, key=lambda d: d[key], reverse=False if order == "asc" else True
+        )
+    except KeyError:
+        print("That key doesn't exist")
+    return newlist

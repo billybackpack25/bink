@@ -11,6 +11,9 @@ I've organised this git repo as such:
 ```
 ./bink/
 │
+├── images/
+│   └── ...
+|
 ├── tests/
 │   ├── __init__.py
 │   ├── test_first_section.py
@@ -23,7 +26,9 @@ I've organised this git repo as such:
 │
 ├── __init__.py
 ├── .gitignore
+├── welcome.txt
 ├── README.md
+├── functions.py
 └── script.py
 ```
 
@@ -36,7 +41,7 @@ Firstly I'd like to tell you about any assumptions I've made:
 1. User doesn't get to select the file being read in
 2. The CSV data doesn't need to be validated
 3. Since a user will be interacting with it, I'll be returning print statements for caught errors
-4. Create a simple terminal menu as not to rely on outside code for this small script
+4. Simple terminal and printing of data will not be evaluated
 
 
 
@@ -45,7 +50,7 @@ Firstly I'd like to tell you about any assumptions I've made:
 I split the test files into the sections provided by the requirements, created my unit tests and then coded the solution to pass the tests.
 I used `isort` and `black` to format my code
 
-
+Along the way I've taken screenshots of the terminal as I build the program, these will be in the `images` directory. 
 
 ## How to use the script?
 

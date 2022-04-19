@@ -4,12 +4,11 @@ from bink.script import read_csv, sort_csv
 
 
 class TestFirstSection(unittest.TestCase):
-
     def test_read_csv(self):
         """
         Test reading in the example csv data
         """
-        self.csv_list_data = read_csv("./bink/data/Python Developer Test Dataset.csv")
+        self.csv_list_data = read_csv("./bink/Python Developer Test Dataset.csv")
         # At least one entry
         self.assertTrue(
             len(self.csv_list_data) >= 1,
