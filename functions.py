@@ -2,6 +2,7 @@ import csv
 import os
 import signal
 from decimal import Decimal
+from datetime import datetime
 
 def filter_csv(csv_list_data: list, key: str, equals: str) -> list:
     """
@@ -123,3 +124,18 @@ def masts_per_tenant(csv_list_data: list) -> dict:
         except: data[mast['Tenant Name']] = 1
 
     return data
+
+def filter_dates(csv_list_data: list, start: datetime, end: datetime, key: str) -> list:
+    """
+    Filter through the data and return masts between two dates given a key
+
+    Args:
+        csv_list_data (list): List of dictionaries as csv data
+        start (datetime): Date to begin the filter range
+        end (datetime): Date to end the filter range
+        key (str): Column used to calculate the date range, must be a date column
+
+    Returns:
+        list: Masts between the times given
+    """
+    pass
