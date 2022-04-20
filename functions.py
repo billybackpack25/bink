@@ -1,7 +1,34 @@
 import csv
 import os
 import signal
+from decimal import Decimal
 
+def filter_csv(csv_list_data: list, key: str, equals: str) -> list:
+    """
+    Take in a list of dicts, and return a subset where the key matches the equals value
+
+    Args:
+        csv_list_data (list): List of CSV dictionary data
+        key (str): Key used to match the equals
+        equals (str): Value used to match against the key
+
+    Returns:
+        list: Filtered list of dictionaries
+    """
+    pass
+
+
+def total_rent(csv_list_data: list) -> int:
+    """
+    Sum up the rent for all entries of  the list
+
+    Args:
+        csv_list_data (list): List of CSV property data
+
+    Returns:
+        int: Sum of rent
+    """
+    pass
 
 def print_menu(menu_options: dict) -> None:
     """

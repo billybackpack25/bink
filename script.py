@@ -6,6 +6,8 @@ from bink.functions import (
     signal_handler,
     read_csv,
     sort_csv,
+    filter_csv, 
+    total_rent,
 )
 import signal
 from tabulate import tabulate
@@ -42,22 +44,25 @@ def first_section(option):
 
     print()
 
+def menu_select(option):
+    if option == "1":
+        first_section(option)
+    elif option == "1f":
+        first_section(option)
+    elif option == "q":
+        goodbye()
+    else:
+        print(
+            "Sorry I didn't quite get that, have you tried one of the options in the list?"
+        )
+
 def main():
     print_welcome()
     while True:
-        print_menu(menu_options=MENU_OPTIONS)
+        print_menu(menu_options = MENU_OPTIONS)
         option = input("")
         clear_the_screen()
-        if option == "1":
-            first_section(option)
-        elif option == "1f":
-            first_section(option)
-        elif option == "q":
-            goodbye()
-        else:
-            print(
-                "Sorry I didn't quite get that, have you tried one of the options in the list?"
-            )
+        menu_select(option)
 
 if __name__ == "__main__":
     # Catching Ctrl + C to say goodbye
