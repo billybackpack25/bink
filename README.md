@@ -48,10 +48,16 @@ Firstly I'd like to tell you about any assumptions I've made:
 
 ## My Approach
 
-I split the test files into the sections provided by the requirements, created my unit tests and then coded the solution to pass the tests.
-I used `isort` and `black` to format my code
+The test files are split into the sections provided by the requirements, I first created unit tests and then coded the solution to pass the tests following TDD.
+The majority of functions have their own file `functions.py`, this was to make the `script.py` easier to read.
+`Script.py` contains the functions per section, the `main` and the `menu_options`.
+`isort` and `black` was used to maintain a standard of formatting throughout the package.
+
+Until the fourth section I was commiting on the main branch, then on the forth section to demonstrate branching I created a separate branch.
 
 Along the way I've taken screenshots of the terminal as I build the program, these will be in the `images` directory. 
+
+A requirements file has been captured from the python virtual environment used to allow for easy environment replication. 
 
 ## How to use the script?
 
@@ -64,7 +70,7 @@ This will provide you with a menu... You can take it away from there. :)
 
 ## Running the tests
 
-Running `python -m unittest` will run all the tests and print out the results on the console.
+Running `python -m unittest -v` will run all the tests and print out the results on the console.
 For example after writting my first test file we can see the below 2 test cases `test_read_csv` and `test_sorted_by_current_rent_asc` have failed.
 
 
@@ -96,3 +102,26 @@ FAILED (errors=2)
 ```
 
 > You can run the test files separately by doing `python -m unittest bink.tests.test_first_section`
+
+A complete test run is below
+
+```
+(bink_env) hassonb@btp190116-ubuntuserver:~/envs/bink_env$ python -m unittest -v
+test_read_csv (bink.tests.test_first_section.TestFirstSection)
+Test reading in the example csv data ... ok
+test_sorted_by_current_rent_asc (bink.tests.test_first_section.TestFirstSection)
+Test that the data has been sorted by Current Rent ASC ... ok
+test_filter_dates (bink.tests.test_fourth_section.TestFirstSection)
+Test the date filter works by returning data between two dates ... ok
+test_filter_lease_years (bink.tests.test_second_section.TestFirstSection)
+Test the filter on lease years == 25 ... ok
+test_total_rent (bink.tests.test_second_section.TestFirstSection)
+Test the total rent for filtered data ... ok
+test_masts_count_per_tenant (bink.tests.test_third_section.TestFirstSection)
+Test the number of masts per tenant for this data set ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.052s
+
+OK
+```
