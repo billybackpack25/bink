@@ -12,16 +12,23 @@ from bink.functions import (
 import signal
 from tabulate import tabulate
 
-TEST_DATA = "./bink/Python Developer Test Dataset.csv"
+TEST_DATA = './bink/Python Developer Test Dataset.csv'
 MENU_OPTIONS = {
-    1: "Sort by Current Rent and output first 5 (1f for all columns)",
-    "q": "Exit the program",
+    1: 'Sort by Current Rent and output first 5 (1f for all columns)',
+    2: 'Output lease years == 25',
+    3: 'Output lease years == 25 total rent',
+    'q': 'Exit the program',
 }
+CSV_DATA = read_csv(filename=TEST_DATA)
 
+def first_section(option: int) -> None:
+    """
+    Print out the first 5 rows of data with table formatting
 
-def first_section(option):
-    data = read_csv(filename=TEST_DATA)
-    sorted_data = sort_csv(data, "Current Rent", order="asc")
+    Args:
+        option (int): Option chosen by the user, either 1 or 1f for all columns
+    """
+    sorted_data = sort_csv(CSV_DATA, "Current Rent", order="asc")
     if option == "1":
         print(
             tabulate(
@@ -44,12 +51,26 @@ def first_section(option):
 
     print()
 
+def second_section(option: int) -> None:
+    """
+    Print out data for lease year == 25 filter and sum of rent
+
+    Args:
+        option (int): User selected option
+    """
+    lease_years_filter = filter_csv(CSV_DATA, 'Lease Years', '25')
+    if option == '2':
+        print(tabulate(lease_years_filter, headers="keys", tablefmt="presto"))
+    elif option == '3':
+        sum_of_rent = total_rent(lease_years_filter)
+        print(f'The sum of rent is £{sum_of_rent}')
+
 def menu_select(option):
-    if option == "1":
+    if option in ['1', '1f']:
         first_section(option)
-    elif option == "1f":
-        first_section(option)
-    elif option == "q":
+    elif option in ['2','3']:
+        second_section(option)
+    elif option == 'q':
         goodbye()
     else:
         print(

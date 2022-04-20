@@ -42,6 +42,7 @@ Firstly I'd like to tell you about any assumptions I've made:
 2. The CSV data doesn't need to be validated
 3. Since a user will be interacting with it, I'll be returning print statements for caught errors
 4. Simple terminal and printing of data will not be evaluated
+5. Lease years total rent is a sum of current rent of all rows in the list, and not the sum of rent for the lease period per tenant
 
 
 

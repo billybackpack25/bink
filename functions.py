@@ -15,7 +15,7 @@ def filter_csv(csv_list_data: list, key: str, equals: str) -> list:
     Returns:
         list: Filtered list of dictionaries
     """
-    pass
+    return [x for x in csv_list_data if x[key] == equals]
 
 
 def total_rent(csv_list_data: list) -> int:
@@ -28,7 +28,7 @@ def total_rent(csv_list_data: list) -> int:
     Returns:
         int: Sum of rent
     """
-    pass
+    return sum([Decimal(x['Current Rent']) for x in csv_list_data])
 
 def print_menu(menu_options: dict) -> None:
     """
@@ -41,8 +41,7 @@ def print_menu(menu_options: dict) -> None:
     for key, value in menu_options.items():
         print(f"{key}: {value}")
 
-    print("\n")
-
+    print()
 
 def print_welcome() -> None:
     """
