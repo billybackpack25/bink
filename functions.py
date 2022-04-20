@@ -17,7 +17,6 @@ def filter_csv(csv_list_data: list, key: str, equals: str) -> list:
     """
     return [x for x in csv_list_data if x[key] == equals]
 
-
 def total_rent(csv_list_data: list) -> int:
     """
     Sum up the rent for all entries of  the list
@@ -53,7 +52,6 @@ def print_welcome() -> None:
     # Join the lines
     print("".join(ascii_art))
 
-
 def goodbye() -> None:
     """
     Clear the screen and print a goodbye statement
@@ -62,7 +60,6 @@ def goodbye() -> None:
     print("Thank you for using Bink, hope to see you again soon.")
     exit(0)
 
-
 def signal_handler(sig, frame) -> None:
     """
     Handle the user hitting Crtl + C, print goodbye message and exit
@@ -70,13 +67,11 @@ def signal_handler(sig, frame) -> None:
     goodbye()
     exit(0)
 
-
 def clear_the_screen() -> None:
     """
     Clear the terminal for both Windows and Linux OS
     """
     os.system("cls" if os.name == "nt" else "clear")
-
 
 def read_csv(filename: str) -> list:
     """
@@ -91,7 +86,6 @@ def read_csv(filename: str) -> list:
     with open(filename, newline="") as csv_infile:
         csv_data = [x for x in csv.DictReader(csv_infile)]
     return csv_data
-
 
 def sort_csv(csv_data: list, key: str, order: str = "asc") -> list:
     """
@@ -112,3 +106,20 @@ def sort_csv(csv_data: list, key: str, order: str = "asc") -> list:
     except KeyError:
         print("That key doesn't exist")
     return newlist
+
+def masts_per_tenant(csv_list_data: list) -> dict:
+    """
+    Count the number of masts per tenant
+
+    Args:
+        csv_list_data (list): List of CSV dictionary data
+
+    Returns:
+        dict: Dictionary of tenent name and count of masts
+    """
+    data = {}
+    for mast in csv_list_data:
+        try: data[mast['Tenant Name']] += 1
+        except: data[mast['Tenant Name']] = 1
+
+    return data

@@ -5,7 +5,6 @@ from bink.script import read_csv, masts_per_tenant
 
 class TestFirstSection(unittest.TestCase):
 
-
     def test_masts_count_per_tenant(self):
         """
         Test the number of masts per tenant for this data set
