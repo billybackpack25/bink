@@ -61,8 +61,11 @@ A requirements file has been captured from the python virtual environment used t
 
 ## How to use the script?
 
-1. To clone the repo run `git clone https://github.com/billybackpack25/bink.git`
-2. Then run `python -m bink.script`
+1. Create your python environment `python -m venv your_python_environment`
+2. Active it `source your_python_environment/bin/activate`
+3. Clone the repo run `git clone https://github.com/billybackpack25/bink.git`
+4. Install the requirements `pip install -r bink/requirements.txt`
+6. Then run `python -m bink.script`
 
 This will provide you with a menu... You can take it away from there. :)
 
